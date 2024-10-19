@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="FinanceApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views ="clr-namespace:FinanceApp.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="FinanceApp">
+
+    <TabBar>    
+        <ShellContent
+        Title="Лист транзацій"
+        ContentTemplate="{DataTemplate views:TransactionsPage}"
+        Route="TransactionsPage" />
+
+        <ShellContent
+            Title="Додати"
+            ContentTemplate="{DataTemplate views:AddTransactionPage}"
+            Route="TransactionsPage" />
+
+        <ShellContent
+    Title="Діаграма витрат"
+    ContentTemplate="{DataTemplate views:ExpenseChartPage}"
+    Route="TransactionsPage" />
+
+    </TabBar>
+</Shell>
+    
