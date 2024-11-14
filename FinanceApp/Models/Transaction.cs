@@ -16,5 +16,8 @@ namespace FinanceApp.Models
         public int CategoryId { get; set; }
         public string? Description { get; set; }
         public bool IsIncome { get; set; }
+
+        [Ignore]
+        public Category Category { get; set; }
     }
 }

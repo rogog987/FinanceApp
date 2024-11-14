@@ -7,7 +7,7 @@ using SQLite;
 
 namespace FinanceApp.Models
 {
-    internal class Category
+    public class Category
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

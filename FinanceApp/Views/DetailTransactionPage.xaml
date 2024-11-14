@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FinanceApp.Views.DetailTransactionPage"
+             Title="DetailTransactionPage">
+    <StackLayout Padding="20">
+        <!-- Amount Entry -->
+        <Entry Text="{Binding Transaction.Amount}"
+               Placeholder="Amount"
+               Keyboard="Numeric"
+               FontSize="Large"
+               TextColor="{Binding Transaction.IsIncome, Converter={StaticResource IncomeExpenseColorConverter}}"
+               HorizontalOptions="FillAndExpand" />
+
+        <!-- Category Picker based on IsExpense filter -->
+        <Picker ItemsSource="{Binding CompatibleCategories}"
+        SelectedItem="{Binding Transaction.Category }"
+        ItemDisplayBinding="{Binding Name}" 
+        Title="{Binding SelectedCategory}"/>
+
+        <!-- Date Picker for Transaction Date -->
+        <DatePicker Date="{Binding Transaction.Date}"
+                    Format="dd.MM.yy"
+                    HorizontalOptions="FillAndExpand" />
+
+        <!-- Description Entry -->
+        <Editor Text="{Binding Transaction.Description}"
+                Placeholder="Description"
+                HorizontalOptions="FillAndExpand"
+                AutoSize="TextChanges" />
+
+        <!-- Buttons for Save and Delete -->
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <Button Text="Save"
+                    Command="{Binding SaveTransactionCommand}" />
+            <Button Text="Delete"
+                    Command="{Binding DeleteTransactionCommand}"
+                    BackgroundColor="Red"
+                    TextColor="White" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

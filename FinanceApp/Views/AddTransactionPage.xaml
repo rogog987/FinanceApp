@@ -2,11 +2,39 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FinanceApp.Views.AddTransactionPage"
-             Title="AddTransactionPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+              Title="Add Transaction"
+             xmlns:viewModels="clr-namespace:FinanceApp.ViewModels">
+
+
+    <StackLayout Padding="20">
+        <Picker Title="Transaction Type"
+                SelectedIndexChanged="OnTransactionTypeChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Expense</x:String>
+                    <x:String>Income</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Picker Title="Category" 
+                ItemsSource="{Binding Categories}" 
+                SelectedItem="{Binding SelectedCategory}" 
+                ItemDisplayBinding="{Binding Name}" />
+
+        <Entry Placeholder="Amount" 
+               Keyboard="Numeric" 
+               Text="{Binding Amount}" />
+
+        <DatePicker
+        Date="{Binding SelectedDate, Mode=TwoWay}"
+        Format="dd.MM.yy"
+        />
+
+        <Editor Placeholder="Description" 
+                Text="{Binding Description}" />
+
+        <Button Text="Save" 
+                Command="{Binding SaveTransactionCommand}" />
+    </StackLayout>
 </ContentPage>

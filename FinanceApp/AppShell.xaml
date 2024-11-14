@@ -9,19 +9,19 @@
 
     <TabBar>    
         <ShellContent
-        Title="Лист транзацій"
+        Title="All Transactions"
         ContentTemplate="{DataTemplate views:TransactionsPage}"
         Route="TransactionsPage" />
 
         <ShellContent
-            Title="Додати"
+            Title="Add"
             ContentTemplate="{DataTemplate views:AddTransactionPage}"
-            Route="TransactionsPage" />
+            Route="AddTransactionPage" />
 
         <ShellContent
-    Title="Діаграма витрат"
+    Title="Expense Chart"
     ContentTemplate="{DataTemplate views:ExpenseChartPage}"
-    Route="TransactionsPage" />
+    Route="ExpenseChartPage" />
 
     </TabBar>
 </Shell>
