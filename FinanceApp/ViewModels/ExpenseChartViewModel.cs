@@ -17,39 +17,30 @@ namespace FinanceApp.ViewModels
 
         public ExpenseChartViewModel(LocalDbService dbService)
         {
-            _dbService = dbService;
-
-            // Initialize the command
+            _dbService = dbService;                      
             LoadExpenseChartDataCommand = new RelayCommand(LoadExpenseChartData);
 
-            // Set the initial date and load data
             SelectedDate = DateTime.Today;
-            LoadExpenseChartData(); // Load initial data when the view model is created
+            LoadExpenseChartData(); 
         }
-
-        // Selected date bound to DatePicker
+             
         [ObservableProperty]
         private DateTime selectedDate;
-
-        // Total expense display string
+            
         [ObservableProperty]
         private string totalExpenseDisplay;
 
-        // Chart data
         [ObservableProperty]
         private DonutChart expenseChart;
 
         public ICommand LoadExpenseChartDataCommand { get; }
-
-        // Load data whenever SelectedDate changes
+               
         partial void OnSelectedDateChanged(DateTime oldValue, DateTime newValue)
         {
-            ExpenseChart = null; 
-            // Check if command is initialized before executing
+            ExpenseChart = null;            
             LoadExpenseChartDataCommand?.Execute(null);
         }
 
-        // Load chart data based on SelectedDate
         private async void LoadExpenseChartData()
         {
             if (_dbService == null) return;
@@ -76,7 +67,7 @@ namespace FinanceApp.ViewModels
             ExpenseChart = new DonutChart
             {
                 Entries = chartEntries,
-                HoleRadius = 0.4f,               
+                HoleRadius = 0,               
                 LabelTextSize = 35,
                 BackgroundColor = SKColors.Transparent
             };
@@ -85,8 +76,7 @@ namespace FinanceApp.ViewModels
         // Method to get color based on category
         private string GetColorForCategory(string category)
         {
-            // Assign colors based on category; adjust colors as needed
-                        return category switch
+            return category switch
             {
                 "Food" => "#FF6347",
                 "Utilities" => "#FFA07A",
@@ -106,7 +96,7 @@ namespace FinanceApp.ViewModels
                 "Entertainment" => "#6A5ACD",
                 "Cigarettes" => "#B22222",
                 "Beauty" => "#DB7093",
-                _ => "#808080" // Default gray
+                _ => "#808080" 
             };
 
         }

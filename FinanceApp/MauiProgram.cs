@@ -33,7 +33,6 @@ namespace FinanceApp
             builder.Services.AddTransient<DetailTransactionViewModel>();
             builder.Services.AddSingleton<ExpenseChartViewModel>();
 
-
             builder.Services.AddSingleton<TransactionsPage>();
             builder.Services.AddSingleton<AddTransactionPage>();
             builder.Services.AddTransient<DetailTransactionPage>();

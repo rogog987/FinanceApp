@@ -66,7 +66,7 @@ namespace FinanceApp.ViewModels
         {
             if (Transaction.Amount <= 0)
             {
-                // Optional validation message
+                await Application.Current.MainPage.DisplayAlert("Invalid Amount", "Please enter an amount greater than zero.", "OK");
                 return;
             }
             if (Transaction.Category != null)
