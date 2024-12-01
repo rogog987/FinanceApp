@@ -52,7 +52,11 @@ namespace FinanceApp.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Invalid Amount", "Please enter an amount greater than zero.", "OK");
                 return;
             }
-
+            if (SelectedCategory == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Invalid Category", "Please select a category.", "OK");
+                return;
+            }
             var transaction = new Transaction
             {
                 Amount = Amount,

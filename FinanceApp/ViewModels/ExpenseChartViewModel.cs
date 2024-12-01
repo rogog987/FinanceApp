@@ -41,8 +41,9 @@ namespace FinanceApp.ViewModels
             LoadExpenseChartDataCommand?.Execute(null);
         }
 
-        private async void LoadExpenseChartData()
+        public async void LoadExpenseChartData()
         {
+            ExpenseChart = null;
             if (_dbService == null) return;
 
             int year = SelectedDate.Year;
